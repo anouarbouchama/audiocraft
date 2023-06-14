@@ -30,7 +30,7 @@ class Predictor(BasePredictor):
         # ),
     ) -> Path:
         """Run a single prediction on the model"""
-        self.model.set_generation_params(duration=12)  # generate 8 seconds.
+        self.model.set_generation_params(duration=duration)  # generate 8 seconds.
         # wav = model.generate_unconditional(4)    # generates 4 unconditional audio samples
 
 
