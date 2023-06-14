@@ -38,7 +38,7 @@ class Predictor(BasePredictor):
         self.model_melody = MusicGen.get_pretrained('melody', device='cuda')
         self.model_melody.set_generation_params(duration=duration)
         start = time.time()
-        wav = self.model.generate([text], progress=True,duration)  # generates 3 samples.
+        wav = self.model.generate([text], progress=True)  # generates 3 samples.
         wav = wav[0]
         end = time.time()
         print(f"Generation took {end-start} seconds")
