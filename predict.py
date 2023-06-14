@@ -13,7 +13,7 @@ class Predictor(BasePredictor):
     def setup(self):
         """Load the model into memory to make running multiple predictions efficient"""
         self.model = MusicGen.get_pretrained('large', device='cuda')
-        self.model.set_generation_params(duration=12)  # generate 8 seconds.
+        self.model.set_generation_params(duration=30)  # generate 8 seconds.
         # wav = model.generate_unconditional(4)    # generates 4 unconditional audio samples
 
 
