@@ -42,7 +42,7 @@ class MusicGen:
         self.lm = lm
         self.device = next(iter(lm.parameters())).device
         self.generation_params: dict = {}
-        self.set_generation_params(duration=15)  # 15 seconds by default
+        self.set_generation_params(duration=30)  # 15 seconds by default
         if self.device.type == 'cpu':
             self.autocast = TorchAutocast(enabled=False)
         else:
