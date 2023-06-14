@@ -30,12 +30,12 @@ class Predictor(BasePredictor):
         # ),
     ) -> Path:
         """Run a single prediction on the model"""
-        self.model.set_generation_params(duration=duration)  # generate 8 seconds.
+        self.model.set_generation_params(duration=12)  # generate 8 seconds.
         # wav = model.generate_unconditional(4)    # generates 4 unconditional audio samples
 
 
         self.model_melody = MusicGen.get_pretrained('melody', device='cuda')
-        self.model_melody.set_generation_params(duration=16)
+        self.model_melody.set_generation_params(duration=20)
         start = time.time()
         wav = self.model.generate([text], progress=True)  # generates 3 samples.
         wav = wav[0]
