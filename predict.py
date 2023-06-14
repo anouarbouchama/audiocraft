@@ -27,16 +27,9 @@ class Predictor(BasePredictor):
         # scale: float = Input(
         #     description="Factor to scale image by", ge=0, le=10, default=1.5
         # ),
-        duration: int = Input(description="duration of the audio", default=15, ge=5, le=30),
     ) -> Path:
         """Run a single prediction on the model"""
-        self.model = MusicGen.get_pretrained('large', device='cuda')
-        self.model.set_generation_params(duration=duration)  # generate 8 seconds.
-        # wav = model.generate_unconditional(4)    # generates 4 unconditional audio samples
-
-
-        self.model_melody = MusicGen.get_pretrained('melody', device='cuda')
-        self.model_melody.set_generation_params(duration=duration)
+        
         start = time.time()
         wav = self.model.generate([text], progress=True)  # generates 3 samples.
         wav = wav[0]
@@ -54,4 +47,3 @@ class Predictor(BasePredictor):
         # return path to wav file
         return Path(save_path)
     
-
