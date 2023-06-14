@@ -24,12 +24,19 @@ class Predictor(BasePredictor):
     def predict(
         self,
         text: str = Input(description="Text prompt", default="Music to watch girls go by"),
+        duration : int = Input(description="Audio duration", default=12,ge=30, le=12),
         # scale: float = Input(
         #     description="Factor to scale image by", ge=0, le=10, default=1.5
         # ),
     ) -> Path:
         """Run a single prediction on the model"""
-        
+        self.model = MusicGen.get_pretrained('large', device='cuda')
+        self.model.set_generation_params(duration=duration)  # generate 8 seconds.
+        # wav = model.generate_unconditional(4)    # generates 4 unconditional audio samples
+
+
+        self.model_melody = MusicGen.get_pretrained('melody', device='cuda')
+        self.model_melody.set_generation_params(duration=16)
         start = time.time()
         wav = self.model.generate([text], progress=True)  # generates 3 samples.
         wav = wav[0]
