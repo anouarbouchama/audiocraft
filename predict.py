@@ -27,7 +27,7 @@ class Predictor(BasePredictor):
         # scale: float = Input(
         #     description="Factor to scale image by", ge=0, le=10, default=1.5
         # ),
-        duration: int = Input(description="duration", default=15, ge=5, le=30),
+        duration: int = Input(description="duration of the audio", default=15, ge=5, le=30),
     ) -> Path:
         """Run a single prediction on the model"""
         self.model = MusicGen.get_pretrained('large', device='cuda')
