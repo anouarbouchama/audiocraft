@@ -24,7 +24,7 @@ class Predictor(BasePredictor):
     def predict(
         self,
         text: str = Input(description="Text prompt", default="Music to watch girls go by"),
-        duration : int = Input(description="Audio duration", default=5,ge=15, le=30),
+        duration : int = Input(description="Audio duration", default=15,ge=5, le=30),
         # scale: float = Input(
         #     description="Factor to scale image by", ge=0, le=10, default=1.5
         # ),
